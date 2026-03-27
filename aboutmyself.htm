@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Page</h1>
+    </header>
+    <main>
+        <section id="intro">
+            <h2>About Me</h2>
+            <p>Hi, I'm Rei Allen R. Paglalunan, a passionate individual who loves exploring new technologies and creative hobbies. This page is a glimpse into my world.</p>
+        </section>
+        <section id="me">
+            <h2>My Picture</h2>
+            <div class="me-card hobby-card" data-description="This is me, Rei Allen R. Paglalunan. This was a picture of me back when I was still a toddler, it's a cherished memory of my early years.">
+                <img src="images\c166019b-d1b3-46d8-9098-dc58e8d4f4f8.jpg" alt="Picture of me">
+            </div>
+        </section>
+        <section id="hobbies">
+            <h2>My Hobbies</h2>
+            <div class="hobby-gallery">
+                <div class="hobby-card" data-description="This is where my love for storytelling shines. I enjoy crafting intricate narratives and developing unique characters that bring my stories to life.">
+                    <img src="images\5569810f-98ac-4e4f-9c5a-f4d51e6b94a2.jpg" alt="Writing a story/novel, or creating a character">
+                </div>
+                <div class="hobby-card" data-description="This is where I make my drafts for my stories, I use this as a storage for jotting down ideas, plot points, and character development notes. It's an essential part of my creative process.">
+                    <img src="images\278b74a0-1907-4101-947c-1abde01538d3.jpg" alt="Writing a story/novel, or creating a character">
+                </div>
+                <div class="hobby-card" data-description="This is where I connect parts of my story, I use this to visualize the flow of my narrative and the relativity of each element to ensure that all elements of my story are cohesive and well-structured.">
+                    <img src="images\36fd5ab1-9f4c-406b-8a53-b80ef9787117.jpg" alt="Writing a story/novel, or creating a character">
+                </div>
+                <div class="hobby-card" data-description="Of course, one of my favorite hobbies is playing video games. I enjoy immersing myself in different worlds, experiencing captivating stories, and challenging myself with various gameplay mechanics. It's a great way to unwind and have fun!">
+                    <img src="images\megaming.png" alt="Playing video games">
+                </div>
+            </div>
+        </section>
+        <div id="expanded-item" class="expanded-item hidden">
+            <div class="expanded-content">
+                <button class="close-btn">&times;</button>
+                <div class="expanded-image-container">
+                    <img id="expanded-img" src="" alt="">
+                </div>
+                <div class="expanded-description">
+                    <h3>Details</h3>
+                    <p id="expanded-text"></p>
+                </div>
+            </div>
+        </div>
+        <section id="education">
+            <h2>Education</h2>
+            <p>I'm currently studying Computer Programming from Unida Christian Colleges, where I learn how to develop a strong and responsive website.</p>
+        </section>
+        <section id="experience">
+            <h2>Skill Experience</h2>
+            <p>With several months or years of studying my specialized field, I've worked on various projects involving web development while also learning how to utilize AI technologies.</p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Basic Programming: HTML, CSS, JavaScript</li>
+                <li>Writing: Character Development, Storytelling</li>
+                <li>Gaming: Strategy, Role-Playing, FPS</li>
+            </ul>
+        </section>
+        <section id="goals">
+            <h2>Future Goals</h2>
+            <p>I'm passionate about becoming a game developer and creating immersive experiences for players, I want to make a difference in the gaming industry.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Rei. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded successfully!');
+            
+            // Handle hobby card clicks
+            const hobbyCards = document.querySelectorAll('.hobby-card');
+            const expandedItem = document.getElementById('expanded-item');
+            const expandedImg = document.getElementById('expanded-img');
+            const expandedText = document.getElementById('expanded-text');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            hobbyCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const description = this.dataset.description;
+                    
+                    expandedImg.src = img.src;
+                    expandedImg.alt = img.alt;
+                    expandedText.textContent = description;
+                    expandedItem.classList.remove('hidden');
+                    expandedItem.classList.add('active');
+                });
+            });
+            
+            // Handle close button
+            closeBtn.addEventListener('click', function() {
+                expandedItem.classList.add('hidden');
+                expandedItem.classList.remove('active');
+            });
+            
+            // Close on background click
+            expandedItem.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
